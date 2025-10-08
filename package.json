@@ -1,0 +1,23 @@
+{
+  "name": "namstereact",
+  "version": "1.0.0",
+  "description": "This is my Namaste React app",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SumitraSaha04/namaste-react.git"
+  },
+  "author": "Sumitra Saha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SumitraSaha04/namaste-react/issues"
+  },
+  "homepage": "https://github.com/SumitraSaha04/namaste-react#readme",
+  "dependencies": {
+    "parcel": "^2.16.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
