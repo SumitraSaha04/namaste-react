@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom/client";
+
 const Header = () => {
   return (
     <div className="header-container">
@@ -15,42 +16,92 @@ const Header = () => {
           <li>Famous Restro Food</li>
           <li>About</li>
           <li>Contact Us</li>
-          <li>Cart🛒</li>
+          <li>Cart 🛒</li>
         </ul>
       </div>
     </div>
   );
 };
+
 const styleCard = {
   backgroundColor: "white",
 };
 
-const RestroCard = () => {
+// ✅ simplified restroList (your same JSON)
+const restroList = [
+  {
+    cards: [
+      {
+        info: {
+          id: "1010897",
+          name: "Arsalan",
+          cloudinaryImageId:
+            "FOOD_CATALOG/IMAGES/CMS/2025/4/5/e1c285ed-2d27-4a10-928f-4459073e9b8a_fde8c012-dd8e-4c71-8a32-1ffe3f8fd639.jpg",
+          costForTwo: "₹800 for two",
+          cuisines: [
+            "Biryani",
+            "Mughlai",
+            "Indian",
+            "Awadhi",
+            "Tandoor",
+            "Kebabs",
+          ],
+          avgRating: 4.5,
+          sla: { deliveryTime: 53 },
+        },
+      },
+      {
+        info: {
+          id: "25140",
+          name: "Zam Zam Restaurant",
+          cloudinaryImageId: "e85899aceae5ebe729d0440e4b1239df",
+          costForTwo: "₹200 for two",
+          cuisines: ["Mughlai", "Biryani"],
+          avgRating: 4.6,
+          sla: { deliveryTime: 42 },
+        },
+      },
+      {
+        info: {
+          id: "893947",
+          name: "Oudh 1590",
+          cloudinaryImageId:
+            "RX_THUMBNAIL/IMAGES/VENDOR/2025/2/3/fb76d27d-cdd7-4c27-b3e0-7298e9095e4a_893947.jpg",
+          costForTwo: "₹800 for two",
+          cuisines: ["Biryani"],
+          avgRating: 4.5,
+          sla: { deliveryTime: 42 },
+        },
+      },
+    ],
+  },
+];
+
+
+const RestroCard = ({ info }) => {
+  const { cuisines, name, costForTwo, cloudinaryImageId, avgRating, sla } = info;
+
   return (
     <div className="restro-card" style={styleCard}>
-      <img
-        className="food-img"
-        alt="food-img"
-        src="https://i.pinimg.com/736x/ce/ca/44/ceca445df991a3eeaa49861b7cd2db7c.jpg"
-      />
-      <h3>Meghna Foods</h3>
-      <h4>Italian Cuisine</h4>
-      <h4>
-        4.4 stars 
-      </h4>
-      <h4>30 mins</h4>
-
-      <div className="rating"></div>
+      <img className="food-img" alt="food-img" src={"https://res.cloudinary.com/swiggy/image/upload/"+cloudinaryImageId} />
+      <h3>{name}</h3>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>⭐ {avgRating}</h4>
+      <h4>{costForTwo}</h4>
+      <h4>{sla.deliveryTime} mins</h4>
     </div>
   );
 };
+
 
 const Body = () => {
   return (
     <div className="body">
       <div className="search">Search</div>
       <div className="res-container">
-        <RestroCard />
+        {restroList[0].cards.map((restaurant) => (
+          <RestroCard key={restaurant.info.id} info={restaurant.info} />
+        ))}
       </div>
     </div>
   );
@@ -64,5 +115,6 @@ const AppLayout = () => {
     </div>
   );
 };
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<AppLayout />);
