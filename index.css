@@ -1,92 +1,130 @@
-html,body{
-  padding:0%;
-  margin:0%;
+/* ===== Scoped to .app to avoid affecting other pages ===== */
+
+.app {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  color: #333;
 }
 
-.header-container {
+/* ===== Header ===== */
+.app .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fffdf7;
-  padding: 15px 40px;
+  background-color: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 40px;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
 }
 
-.logo-container {
+.app .logo-container {
   display: flex;
   align-items: center;
 }
 
-.logo {
-  width: 90px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+.app .logo {
+  height: 70px;
+  width: auto;
+  border-radius: 10px;
 }
 
-.logo:hover {
-  transform: scale(1.05);
-}
-
-.nav-links ul {
+.app .nav-links ul {
   display: flex;
+  gap: 25px;
   list-style: none;
-  gap: 30px;
   margin: 0;
   padding: 0;
 }
 
-.nav-links li {
+.app .nav-links li {
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.app .nav-links li:hover {
+  color: #ff6347;
+}
+
+/* ===== Body ===== */
+.app .body {
+  padding: 30px 50px;
+}
+
+.app .search {
+  margin-bottom: 20px;
   font-size: 18px;
   font-weight: 500;
-  color:#e67e22;
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.2s ease;
+  color: #555;
 }
 
-.nav-links li:hover {
-  color: #e67e22;
-  transform: translateY(-2px);
+/* ===== Restaurant Cards ===== */
+.app .res-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
 }
 
+.app .restro-card {
+  width: 260px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.app .restro-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.app .food-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.app .restro-card h3 {
+  margin: 10px 0 5px;
+  color: #222;
+}
+
+.app .restro-card h4 {
+  margin: 4px 0;
+  font-weight: 400;
+  color: #666;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .header-container {
+  .app .header-container {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .app .nav-links ul {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .app .restro-card {
+    width: 90%;
+  }
+
+  .app .body {
     padding: 20px;
   }
-
-  .nav-links ul {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-   
-  }
-
-  .nav-links li {
-    font-size: 16px;
-  }
 }
-.search{
-  padding: 10px 20px;
-  
-}
-.restro-card{
-  padding:10px 10px;
-  width:200px;
-  height:350px;
-}
-.restro-card:hover{
-border:1px solid black;
-cursor:pointer;
-}
-
-.food-img{
- 
-  height:180px;
-  width:200px;
+.filter-btn{
+  padding:10px;
+  border:1px solid black;
+  margin-bottom: 5PX;
+  cursor: pointer;
 }
