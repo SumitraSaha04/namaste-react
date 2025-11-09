@@ -10,7 +10,8 @@ const Body = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+    console.log("useEffect called inside Body component ")
+  }, [searchText]);
 
   const fetchData = async () => {
     try {
@@ -20,7 +21,7 @@ const Body = () => {
       const res = await response.json();
       const data = res?.data?.cards?.filter((item) => {
         return (
-          item?.card.card?.["@type"] ===
+          item?.card?.card?.["@type"] ===
           "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
         );
       });
@@ -69,7 +70,7 @@ const Body = () => {
               (res) => res?.card?.card?.info?.avgRating > 4.5
             );
 
-            setListOfRestros(filtered);
+            setFilteredRestros(filtered);
             console.log("Filtered---", filtered);
           }}
         >
